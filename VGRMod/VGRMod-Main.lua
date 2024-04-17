@@ -12,7 +12,7 @@ function SMODS.INIT.VGRMod_Main()
 	local VGRMod_File = SMODS.findModByID("VGRMod") --Main VGRMod Path
 	--Add Your Master Lua File here
 	local VGRMod_branches = {
-		'/ItsFlowwey/ItsFlowwey_Branch.lua',
+		'ItsFlowwey/ItsFlowwey_Branch.lua',
 	}
 
 	local function init_jokers()
