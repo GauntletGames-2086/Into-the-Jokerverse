@@ -757,7 +757,7 @@ function Card:set_debuff(should_debuff)
 		return 
 	end
 end
-local CardRemove_from_deck_ref = Card.add_to_deck
+local CardRemove_from_deck_ref = Card.remove_from_deck
 function Card.remove_from_deck(self, from_debuff)
 	if self.added_to_deck then
 		if self.ability.name == 'Innervate' then
