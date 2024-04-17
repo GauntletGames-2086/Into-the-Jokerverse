@@ -6,9 +6,7 @@ local jokers_def = {
 			"{C:mult}+#1#{} Mult after grown",
 			"{C:mult}+#2#{} Mult per {V:1}#3#{} card held in hand",
 			"Grown after triggering {C:attention}#4#{} times",
-			"Resets at end of round",
-			"{C:inactive}Plant these in the spring.",
-			"{C:inactive}Takes 4 days to mature.{}"
+			"Resets at end of round"
 		}
 	},
 	strawberry_seeds = { -- Strawberry Seeds
@@ -17,9 +15,7 @@ local jokers_def = {
 			"{X:mult,C:white}#1#X{} Mult after grown",
 			"{X:mult,C:white}+#2#X{} Mult per {V:1}#3#{} card held in hand",
 			"Grown after triggering {C:attention}#4#{} times",
-			"Resets at end of round",
-			"{C:inactive}Plant these in spring",
-			"{C:inactive}Takes 8 days to mature.{}"
+			"Resets at end of round"
 		}
 	},
 	starfruit_seeds = { -- Starfruit Seeds
@@ -28,9 +24,7 @@ local jokers_def = {
 			"Earn {C:money}#1#${} dollars after grown",
 			"{C:money}+#2#${} per {V:1}#3#{} card held in hand",
 			"Grown after triggering {C:attention}#4#{} times",
-			"Resets at end of round",
-			"{C:inactive}Plant these in spring",
-			"{C:inactive}Takes 13 days to mature.{}"
+			"Resets at end of round"
 		}
 	},
 	ancient_seeds = { -- Ancient Seeds
@@ -39,8 +33,7 @@ local jokers_def = {
 			"{C:chips}+#1#{} Chips after grown",
 			"{C:chips}+#2#{} Chips per {V:1}#3#{} card held in hand",
 			"Grown after triggering {C:attention}#4#{} times",
-			"Resets at end of round",
-			"{C:inactive}Could these still grow?"
+			"Resets at end of round"
 		}
 	},
 	power_shard = { -- Power Shard
@@ -266,16 +259,16 @@ local Joker_Info = {
 }
 
 SMODS.Sprite:new("VGRMod_Jokers", SMODS.findModByID("VGRMod").path.."ItsFlowwey/", "VGRMod_Jokers.png", 71, 95, "asset_atli"):register()
+
+init_localization()
+
 G.localization.misc.dictionary.k_grown = "Grown!"
 G.localization.misc.dictionary.k_harvested = "Harvested!"
-G.localization.descriptions.Other
 G.localization.misc.dictionary.k_hacked = "Hacked!"
 G.localization.misc.dictionary.k_hand_remaining = "1 Hand Remaining!"
 G.localization.misc.dictionary.k_reenabled = "Re-enabled!"
 G.localization.misc.v_dictionary['backup_active'] = "Active!"
 G.localization.misc.dictionary['k_plus_innerve'] = "+1 Debuffed Cards"
-
-init_localization()
 
 --Joker UIBox Info
 function Joker_Info.parsnip_seeds.loc_def(center)
@@ -854,7 +847,7 @@ function Card.calculate_dollar_bonus(self)
 			end
 			return joker_orig_money
 		end
-		if self.ability.name == 'Starfruit Seeds' then
+		if self.ability.name == 'Starfruit Seeds' and self.ability.extra.grown == true then
 			local money_to_make = self.ability.extra.curr_money
 			self.ability.extra.curr_money = 0
 			return money_to_make
